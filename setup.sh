@@ -1,0 +1,39 @@
+#!/bin/bash
+pip install litellm 'litellm[proxy]'
+cat > config.yaml << 'EOF'
+model_list:
+  - model_name: grok-3
+    litellm_params:
+      model: github/grok-3
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: gpt-4.1
+    litellm_params:
+      model: github/gpt-4.1
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: gpt-4o
+    litellm_params:
+      model: github/gpt-4o
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: deepseek-r1-0528
+    litellm_params:
+      model: github/deepseek-r1-0528
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: grok-3-mini
+    litellm_params:
+      model: github/grok-3-mini
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: deepseek-v3-0324
+    litellm_params:
+      model: github/deepseek-v3-0324
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: gpt-4o-mini
+    litellm_params:
+      model: github/gpt-4o-mini
+      api_key: os.environ/GITHUB_API_KEY
+  - model_name: gpt-4.1-nano
+    litellm_params:
+      model: github/gpt-4.1-nano
+      api_key: os.environ/GITHUB_API_KEY
+EOF
+litellm --config config.yaml --port 4000 &
+litellm --config config.yaml --port 11434 &
