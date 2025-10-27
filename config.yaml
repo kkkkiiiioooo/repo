@@ -1,7 +1,3 @@
-#!/bin/bash
-sudo apt-get update && sudo apt-get install -y python3-pip
-pip install litellm 'litellm[proxy]'
-cat > config.yaml << 'EOF'
 model_list:
   - model_name: grok-3
     litellm_params:
@@ -35,7 +31,3 @@ model_list:
     litellm_params:
       model: github/gpt-4.1-nano
       api_key: os.environ/GITHUB_API_KEY
-EOF
-litellm --config config.yaml --port 4000 &
-litellm --config config.yaml --port 11434 &
-sudo litellm --config config.yaml --port 1234 &
