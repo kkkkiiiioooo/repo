@@ -1,0 +1,6 @@
+{
+  "name": "LiteLLM",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "echo 'export GITHUB_API_KEY=$GITHUB_TOKEN' >> ~/.bashrc && chmod +x setup.sh",
+  "postStartCommand": "bash -c 'source ~/.bashrc && ./setup.sh'"
+}
